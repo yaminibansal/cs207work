@@ -1,0 +1,16 @@
+# your code here
+def lc_reader(filename):
+    lclist=[]
+    with open(filename) as fp:
+        count = 1
+        for line in fp:
+            if count == 1:
+                dict_of_facets1 = [s for s in line.strip('#').split()];
+            elif count == 2:
+                dict_of_facets2 = [s for s in line.strip('#').split()];
+            else:
+                if line.find('#')!=0:
+                    lclist.append([float(f) for f in line.strip().split()])  
+            count+=1
+        dict_of_facets = dict(zip(dict_of_facets1, dict_of_facets2))
+    return lclist, dict_of_facets
